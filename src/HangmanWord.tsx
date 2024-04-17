@@ -1,8 +1,8 @@
 type HangmanWordProps = {
-  guessedLetters: string[]
-  wordToGuess: string
-  reveal?: boolean
-}
+  guessedLetters: string[];
+  wordToGuess: string;
+  reveal?: boolean;
+};
 
 export function HangmanWord({
   guessedLetters,
@@ -17,7 +17,7 @@ export function HangmanWord({
         fontSize: "6rem",
         fontWeight: "bold",
         textTransform: "uppercase",
-        fontFamily: "monospace",
+        fontFamily: "cursive",
       }}
     >
       {wordToGuess.split("").map((letter, index) => (
@@ -37,5 +37,5 @@ export function HangmanWord({
         </span>
       ))}
     </div>
-  )
+  );
 }
