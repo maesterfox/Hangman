@@ -1,16 +1,16 @@
 import express from "express";
 import cors from "cors";
 import path from "path";
+import { fileURLToPath } from "url";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(cors());
+const __dirname = path.dirname(fileURLToPath(import.meta.url)); // New way to get __dirname
 
-// Serve static files from 'dist'
+app.use(cors());
 app.use(express.static(path.resolve(__dirname, "dist")));
 
-// Handle all GET requests by serving index.html
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "dist", "index.html"));
 });
