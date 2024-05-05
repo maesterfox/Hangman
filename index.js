@@ -1,16 +1,14 @@
-import express from "express";
-import cors from "cors";
-import path from "path";
+const express = require("express");
+const cors = require("cors");
+const path = require("path");
 
 const app = express();
-const PORT = process.env.PORT || 3000; // Render sets the PORT environment variable
+const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 
-// Serve static files from the Vite build output directory
 app.use(express.static("dist"));
 
-// Handle SPA routing by returning index.html for all GET requests
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "dist", "index.html"));
 });
