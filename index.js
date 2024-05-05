@@ -6,13 +6,16 @@ import { fileURLToPath } from "url";
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url)); // New way to get __dirname
+// Correct way to get __dirname in ES module
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 app.use(cors());
-app.use(express.static(path.resolve(__dirname, "dist")));
+// Since 'dist' is at the root, adjust path accordingly
+app.use(express.static(path.resolve(__dirname, "..", "dist")));
 
 app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "dist", "index.html"));
+  // Ensure the path to 'index.html' also reflects 'dist' being at the root
+  res.sendFile(path.resolve(__dirname, "..", "dist", "index.html"));
 });
 
 app.listen(PORT, () => {
