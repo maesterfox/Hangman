@@ -15,7 +15,7 @@ app.use(express.static(path.join(__dirname, "src")));
 
 // Handle all GET requests by serving 'index.html' from the 'dist' directory
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "src", "index.html"));
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 
 app.listen(PORT, () => {
